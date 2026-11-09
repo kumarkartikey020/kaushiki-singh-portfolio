@@ -1348,20 +1348,42 @@
               </div>
             </div>
           </div>
+
+          <!-- Direct One-Click Actions -->
+          <div class="direct-connect-actions">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=kaushikidiva@gmail.com&su=Forensic+Science+Inquiry" target="_blank" rel="noopener noreferrer" class="btn-direct-connect btn-gmail">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <span>Compose in Gmail Web</span>
+            </a>
+            <a href="https://www.linkedin.com/in/kaushiki-singh-560336290?utm_source=share_via&amp;utm_content=profile&amp;utm_medium=member_android" target="_blank" rel="noopener noreferrer" class="btn-direct-connect btn-linkedin">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+              <span>Connect on LinkedIn</span>
+            </a>
+          </div>
         </div>
 
-        <!-- Quick Inquiry Message Form -->
+        <!-- Quick Inquiry Message Form with Real Email Delivery -->
         <form class="contact-form" id="contact-form">
-          <h3 style="font-size: 1.25rem;">Send a Scientific Inquiry</h3>
+          <div class="form-header-row">
+            <div>
+              <h3 style="font-size: 1.25rem;">Send a Scientific Inquiry</h3>
+              <p style="font-size: 0.82rem; color: var(--text-secondary); margin-top: 0.2rem;">
+                Submit below to notify Kaushiki Singh directly at <strong>kaushikidiva@gmail.com</strong>
+              </p>
+            </div>
+            <span class="form-badge-live">&#9679; Real-Time Delivery</span>
+          </div>
+
+          <div id="form-alert" class="form-alert-container"></div>
 
           <div class="form-group">
             <label class="form-label" for="form-name">Your Full Name *</label>
-            <input type="text" id="form-name" class="form-input" placeholder="e.g. Dr. Jane Doe / Research Fellow" required>
+            <input type="text" id="form-name" class="form-input" placeholder="e.g. Dr. Jane Doe / Research Fellow" required autocomplete="name">
           </div>
 
           <div class="form-group">
             <label class="form-label" for="form-email">Your Email Address *</label>
-            <input type="email" id="form-email" class="form-input" placeholder="e.g. jane.doe@university.edu" required>
+            <input type="email" id="form-email" class="form-input" placeholder="e.g. jane.doe@university.edu" required autocomplete="email">
           </div>
 
           <div class="form-group">
@@ -1371,13 +1393,16 @@
 
           <div class="form-group">
             <label class="form-label" for="form-message">Message *</label>
-            <textarea id="form-message" class="form-textarea" placeholder="Write your message here..." required></textarea>
+            <textarea id="form-message" class="form-textarea" placeholder="Write your message here... Include your institution, purpose, or collaboration inquiry." required></textarea>
           </div>
 
-          <button type="submit" class="btn btn-primary" style="margin-top: 0.5rem;">
+          <button type="submit" class="btn btn-primary" id="btn-submit-inquiry" style="margin-top: 0.5rem; width: 100%;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-            Send Message
+            <span id="btn-submit-text">Send Direct Inquiry to Kaushiki</span>
           </button>
+          <p style="font-size:0.75rem; color:var(--text-muted); text-align:center; margin-top:0.25rem;">
+            Instant notification dispatched to <strong>kaushikidiva@gmail.com</strong> &middot; Verified &amp; Secure
+          </p>
         </form>
       </div>
     </div>

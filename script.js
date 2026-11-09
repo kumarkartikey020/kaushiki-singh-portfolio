@@ -869,31 +869,123 @@ function initModals() {
 }
 
 /* ==========================================================================
-   9. CONTACT FORM & EMAIL COPY HELPERS
+   9. CONTACT FORM & REAL-TIME EMAIL DELIVERY (to kaushikidiva@gmail.com)
    ========================================================================== */
 function initContactForm() {
   const form = document.getElementById("contact-form");
+  const alertContainer = document.getElementById("form-alert");
+  const submitBtn = document.getElementById("btn-submit-inquiry") || form?.querySelector("button[type='submit']");
+  const submitText = document.getElementById("btn-submit-text");
+
+  function showAlert(message, type = "success") {
+    if (!alertContainer) return;
+    const icon = type === "success"
+      ? `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>`
+      : `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>`;
+
+    alertContainer.innerHTML = `
+      <div class="form-status-alert ${type}">
+        <span style="flex-shrink:0; margin-top:2px;">${icon}</span>
+        <div>${message}</div>
+      </div>
+    `;
+  }
+
+  function clearAlert() {
+    if (alertContainer) alertContainer.innerHTML = "";
+  }
+
   if (form) {
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      const name = document.getElementById("form-name")?.value.trim() || "";
-      const email = document.getElementById("form-email")?.value.trim() || "";
-      const subject = document.getElementById("form-subject")?.value.trim() || "Forensic Science Inquiry";
-      const message = document.getElementById("form-message")?.value.trim() || "";
+      clearAlert();
+
+      const nameInput = document.getElementById("form-name");
+      const emailInput = document.getElementById("form-email");
+      const subjectInput = document.getElementById("form-subject");
+      const messageInput = document.getElementById("form-message");
+
+      const name = nameInput?.value.trim() || "";
+      const email = emailInput?.value.trim() || "";
+      const subject = subjectInput?.value.trim() || "Forensic Science Inquiry";
+      const message = messageInput?.value.trim() || "";
 
       if (!name || !email || !message) {
+        showAlert("Please fill in your name, email, and message.", "error");
         showToast("Please fill in all required fields.", "error");
         return;
       }
 
-      const mailtoUrl = `mailto:kaushikidiva@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("From: " + name + " (" + email + ")\n\n" + message)}`;
-      window.location.href = mailtoUrl;
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        showAlert("Please enter a valid email address.", "error");
+        showToast("Invalid email address format.", "error");
+        return;
+      }
 
-      showToast("Thank you, " + name + "! Your inquiry has been prepared.", "success");
-      form.reset();
+      // Loading State
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.classList.add("btn-loading");
+      }
+      if (submitText) {
+        submitText.innerHTML = `<span class="spinner-icon"></span> Delivering inquiry to Kaushiki...`;
+      }
+
+      const payload = {
+        name: name,
+        email: email,
+        _subject: `[Forensic Portfolio] ${subject} - From ${name}`,
+        message: message,
+        _template: "table",
+        _captcha: "false"
+      };
+
+      try {
+        const response = await fetch("https://formsubmit.co/ajax/kaushikidiva@gmail.com", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await response.json();
+
+        if (response.ok && (data.success === "true" || data.success === true || data.message)) {
+          showAlert(
+            `<strong>Message Delivered!</strong> Thank you, <strong>${name}</strong>. Your inquiry has been sent directly to Kaushiki Singh (<strong>kaushikidiva@gmail.com</strong>). She will receive your message and reply to <em>${email}</em>.`,
+            "success"
+          );
+          showToast(`Inquiry delivered directly to Kaushiki!`, "success");
+          form.reset();
+        } else {
+          throw new Error(data.message || "Submission failed");
+        }
+      } catch (err) {
+        console.warn("Direct submission notice:", err);
+        const mailtoUrl = `mailto:kaushikidiva@gmail.com?subject=${encodeURIComponent("[Forensic Inquiry] " + subject)}&body=${encodeURIComponent("From: " + name + " (" + email + ")\n\n" + message)}`;
+        window.open(mailtoUrl, "_blank");
+
+        showAlert(
+          `<strong>Notice:</strong> Your inquiry has been prepared for Kaushiki Singh (<strong>kaushikidiva@gmail.com</strong>). An email window has been opened. You can also write directly to <strong>kaushikidiva@gmail.com</strong>.`,
+          "success"
+        );
+        showToast("Inquiry prepared in email client.", "info");
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.classList.remove("btn-loading");
+        }
+        if (submitText) {
+          submitText.textContent = "Send Direct Inquiry to Kaushiki";
+        }
+      }
     });
   }
 
+  // Copy email buttons
   const copyBtns = document.querySelectorAll(".btn-copy");
   copyBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
