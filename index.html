@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kaushiki Singh | Forensic Science &amp; Molecular Biology Portfolio</title>
+  
+  <!-- SEO & Social Meta Tags -->
+  <meta name="description" content="Professional portfolio of Kaushiki Singh, Forensic Science postgraduate student at Vivekananda Global University (VGU), Jaipur. Specializing in Forensic Biology, DNA Fingerprinting, Serology, and Evidence-based Investigations.">
+  <meta name="keywords" content="Kaushiki Singh, Forensic Science, Forensic Biology, DNA Fingerprinting, Serology, SFSL Patna, AIIMS Delhi, Sage University, VGU Jaipur, Crime Scene Investigation">
+  <meta name="author" content="Kaushiki Singh">
+  <meta property="og:title" content="Kaushiki Singh | Forensic Science &amp; Molecular Biology Portfolio">
+  <meta property="og:description" content="Explore research, laboratory training at SFSL Patna, academic projects in blood grouping kits, forensic serology, and DNA fingerprinting.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/images/kaushiki-singh.jpg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Three.js Library for 3D Molecular Laboratory -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Background Ambient Lights & DNA Canvas -->
+  <div class="ambient-glow"></div>
+  <div class="ambient-glow-2"></div>
+  <canvas id="dna-canvas"></canvas>
+
+  <!-- Sidebar Backdrop (Mobile Drawer) -->
+  <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+  <!-- Floating Sidebar Menu Button (Shown when sidebar is hidden on desktop) -->
+  <button class="sidebar-floating-toggle" id="sidebar-floating-toggle" aria-label="Open Navigation" title="Show Navigation Menu">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+    <span>Menu</span>
+  </button>
+
+  <!-- ==========================================================================
+       SIDEBAR NAVIGATION (Fixed Desktop Side Nav & Off-Canvas Mobile Drawer)
+       ========================================================================== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header-bar">
+      <span class="sidebar-badge-lbl">PORTFOLIO MENU</span>
+      <button class="sidebar-close-btn" id="sidebar-close-btn" aria-label="Hide Sidebar" title="Hide Navigation Menu">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="sidebar-profile">
+      <div class="sidebar-avatar-wrap">
+        <img src="assets/images/profile.jpg" alt="Kaushiki Singh" class="sidebar-avatar">
+        <span class="sidebar-status-dot" title="Active Candidate"></span>
+      </div>
+      <h2 class="sidebar-name">Kaushiki Singh</h2>
+      <div class="sidebar-sub">Forensic Science &middot; M.Sc. VGU</div>
+      <span class="sidebar-pill">State FSL Patna Alumna</span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="#home" class="side-link active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        <span>Home</span>
+      </a>
+      <a href="#about" class="side-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        <span>About Me</span>
+      </a>
+      <a href="#education" class="side-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+        <span>Education</span>
+      </a>
+      <a href="#experience" class="side-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+        <span>Experience &amp; SFSL</span>
+      </a>
+      <a href="#lab-3d" class="side-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+        <span>3D Molecular Lab</span>
+      </a>
+      <a href="#projects" class="side-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+        <span>Projects &amp; Research</span>
+      </a>
+      <a href="#achievements" class="side-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+        <span>Achievements</span>
+      </a>
+      <a href="#certifications" class="side-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+        <span>Certifications</span>
+      </a>
+      <a href="#skills" class="side-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+        <span>Technical Skills</span>
+      </a>
+      <a href="#research" class="side-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+        <span>Research Interests</span>
+      </a>
+      <a href="#contact" class="side-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        <span>Get In Touch</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="cv.html" target="_blank" class="btn-sidebar-cv">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+        <span>Academic CV (Print)</span>
+      </a>
+      <div class="sidebar-theme-row">
+        <span>Dark / Light Mode</span>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Light/Dark Theme">
+          <span id="theme-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </span>
+        </button>
+      </div>
+      <button class="btn-hide-sidebar" id="btn-hide-sidebar-footer" title="Hide Navigation Menu">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="11 17 6 12 11 7"></polyline>
+          <polyline points="18 17 13 12 18 7"></polyline>
+        </svg>
+        <span>Hide Sidebar</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Mobile Top Bar (<= 1024px) -->
+  <header class="mobile-top-nav">
+    <a href="#home" class="mobile-brand">
+      <img src="assets/images/profile.jpg" alt="Kaushiki Singh" class="mobile-brand-avatar">
+      <div class="mobile-brand-text">
+        <h4>Kaushiki Singh</h4>
+        <span>Forensic Science</span>
+      </div>
+    </a>
+    <div class="mobile-actions">
+      <button class="theme-toggle" id="mobile-theme-toggle" aria-label="Toggle Theme">
+        <span id="mobile-theme-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </span>
+      </button>
+      <button class="mobile-toggle" id="sidebar-toggle" aria-label="Open Sidebar Menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content Layout Wrapped for Sidebar Offset -->
+  <main class="main-content-layout">
+
+  <!-- ==========================================================================
+       HERO SECTION
+       ========================================================================== -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge-row">
+            <span class="hero-tag pulse">M.Sc. Forensic Science Candidate</span>
+            <span class="hero-tag">State FSL Patna Alumna</span>
+            <span class="hero-tag">AIIMS Delhi Certified</span>
+          </div>
+
+          <h1 class="hero-title">Kaushiki Singh</h1>
+          <h2 class="hero-subtitle">
+            Forensic Science | Forensic Biology | DNA Fingerprinting | Research &amp; Innovation
+          </h2>
+
+          <p class="hero-desc">
+            Welcome to my professional portfolio. I am a Forensic Science postgraduate student currently pursuing my <strong>M.Sc. at Vivekananda Global University (VGU), Jaipur</strong>, following my <strong>B.Sc. in Forensic Science from Sage University, Bhopal (82.9%)</strong>.
+          </p>
+
+          <p class="hero-desc">
+            My academic and practical interests center around <strong>Forensic Biology, DNA Fingerprinting, DNA Profiling, Forensic Genetics, Serology, and Molecular Diagnostics</strong>. With multidisciplinary internship exposure at the <strong>State Forensic Science Laboratory (SFSL), Patna</strong> across Biology, Serology, POCSO, and Toxicology, I bridge rigorous laboratory protocols with modern scientific inquiry.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#projects" class="btn btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              Explore Projects &amp; Research
+            </a>
+            <a href="cv.html" target="_blank" class="btn btn-outline" style="border-color:var(--accent-cyan); color:var(--text-accent);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+              View / Print Academic CV
+            </a>
+            <a href="#lab-3d" class="btn btn-outline">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              3D Forensic Lab
+            </a>
+            <a href="#experience" class="btn btn-outline">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+              SFSL Experience
+            </a>
+          </div>
+        </div>
+
+        <!-- 3D Layered Perspective Photo Card -->
+        <div class="hero-visual photo-3d-wrapper">
+          <div class="holo-float-badge badge-top-left">
+            <span class="badge-icon-box">🏛️</span>
+            <span>SFSL Patna &middot; Govt. of Bihar Intern</span>
+          </div>
+
+          <div class="photo-3d-card">
+            <div class="photo-frame-inner">
+              <img src="assets/images/kaushiki-singh.jpg" alt="Kaushiki Singh - Forensic Science Researcher" class="photo-frame-img">
+              <div class="photo-hud-overlay">
+                <div class="hud-top-bar">
+                  <span>[ FORENSIC BIOLOGY // SPECIMEN ID: KS-2026 ]</span>
+                  <span class="hud-verified-pill">&#10003; VERIFIED CANDIDATE</span>
+                </div>
+                <div class="hud-bottom-bar">
+                  <div>
+                    <div class="hud-tag-name">Kaushiki Singh</div>
+                    <div class="hud-tag-title">M.Sc. Candidate &middot; VGU Jaipur</div>
+                  </div>
+                  <span style="font-family:var(--font-mono); font-size:0.75rem; color:#34d399; font-weight:700;">82.9% B.Sc.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="holo-float-badge badge-bottom-right">
+            <span class="badge-icon-box">🔬</span>
+            <span>DNA Fingerprinting &amp; Serology</span>
+          </div>
+
+          <div class="holo-float-badge badge-mid-right">
+            <span class="badge-icon-box">🥈</span>
+            <span>2nd Prize &middot; CSI Award</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Metrics Strip -->
+      <div class="stats-strip">
+        <div class="stat-item">
+          <span class="stat-number">82.9%</span>
+          <span class="stat-label">B.Sc. Academic Performance</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">4 Divisions</span>
+          <span class="stat-label">Biology &middot; Serology &middot; POCSO &middot; Toxicology</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">5+</span>
+          <span class="stat-label">Conferences, Workshops &amp; Certifications</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">DNA &amp; Serology</span>
+          <span class="stat-label">Core Research &amp; Innovation Focus</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       ABOUT ME SECTION (Professional Biography)
+       ========================================================================== -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Section 01</span>
+        <h2 class="section-title">Professional Biography</h2>
+        <p class="section-subtitle">
+          Dedicated, research-oriented forensic science postgraduate driven by scientific rigor, laboratory precision, and evidence-based methodology.
+        </p>
+      </div>
+
+      <!-- 3D Featured Researcher Card & Narrative Split -->
+      <div class="about-researcher-container">
+        <div class="about-card-3d">
+          <div class="about-portrait-frame">
+            <img src="assets/images/profile.jpg" alt="Kaushiki Singh - Forensic Science Researcher">
+          </div>
+          <div class="about-researcher-meta">
+            <h3>Kaushiki Singh</h3>
+            <p>M.Sc. Forensic Science &middot; VGU Jaipur</p>
+            <div class="about-score-pill-row">
+              <span class="about-score-pill">B.Sc. Score: 82.9%</span>
+              <span class="about-score-pill">SFSL Patna Intern</span>
+              <span class="about-score-pill">AIIMS Delhi Trainee</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-bio">
+          <p class="lead-p">
+            Kaushiki Singh is a dedicated and research-oriented Forensic Science postgraduate student with a strong academic foundation in Forensic Science and a focused interest in Forensic Biology, DNA Fingerprinting, Forensic Genetics, and Molecular Diagnostics.
+          </p>
+          <p>
+            She completed her Bachelor of Science (B.Sc.) in Forensic Science from Sage University, Bhopal, achieving an academic score of <strong>82.9%</strong>. She is currently pursuing her Master of Science (M.Sc.) in Forensic Science at <strong>Vivekananda Global University (VGU), Jaipur</strong>, where she continues to develop her scientific knowledge, analytical abilities, and understanding of advanced forensic methodologies.
+          </p>
+          <p>
+            Her academic interests primarily focus on the scientific examination of biological evidence, DNA profiling, forensic serology, molecular techniques, and the application of scientific principles in criminal investigations. She is particularly interested in understanding how biological materials can provide valuable scientific information for forensic identification and evidence-based investigations.
+          </p>
+          <p>
+            During her internship at the <strong>State Forensic Science Laboratory (SFSL), Patna</strong>, she gained practical exposure to multidisciplinary forensic laboratory operations across the <strong>Biology, Serology, POCSO, and Toxicology</strong> divisions. This experience provided an opportunity to understand standardized laboratory workflows, biological evidence management, chain of custody procedures, quality assurance practices, laboratory safety, and ethical forensic procedures under the guidance of experienced forensic professionals.
+          </p>
+          <p>
+            Beyond conventional forensic laboratory techniques, she is actively interested in exploring the integration of modern technology, molecular biology, and innovative scientific approaches into forensic investigations to advance reliable, objective criminal justice outcomes.
+          </p>
+        </div>
+      </div>
+
+        <div class="about-pillars">
+          <div class="pillar-card">
+            <div class="pillar-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            </div>
+            <div class="pillar-content">
+              <h4>DNA &amp; Molecular Forensics</h4>
+              <p>Passionate about DNA profiling, genetic markers, STR typing, and epigenetic markers for biological age estimation and individual identification.</p>
+            </div>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            </div>
+            <div class="pillar-content">
+              <h4>Standardized Protocols &amp; Chain of Custody</h4>
+              <p>Practical training in state laboratory SOPs, evidence preservation, quality control, contamination prevention, and ethical documentation.</p>
+            </div>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            </div>
+            <div class="pillar-content">
+              <h4>Modern Innovation &amp; Technology</h4>
+              <p>Exploring rapid field preliminary testing kits, digital forensics awareness, OSINT methodologies, and AI integration in criminalistics.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       EDUCATION SECTION
+       ========================================================================== -->
+  <section class="section" id="education" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Section 02</span>
+        <h2 class="section-title">Educational Background</h2>
+        <p class="section-subtitle">
+          Solid academic foundation and advanced postgraduate coursework in forensic science and biotechnology.
+        </p>
+      </div>
+
+      <div class="edu-grid">
+        <!-- Master's Degree -->
+        <div class="edu-card">
+          <div class="edu-card-top">
+            <h3 class="edu-degree">Master of Science (M.Sc.) - Forensic Science</h3>
+            <span class="edu-badge-status active">Currently Pursuing</span>
+          </div>
+          <div>
+            <div class="edu-institution">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+              Vivekananda Global University (VGU), Jaipur
+            </div>
+            <p class="edu-desc">
+              Postgraduate studies in Forensic Science with focused specialization in forensic biology, DNA fingerprinting, forensic genetics, serological analysis, and molecular diagnostic procedures. Continuing to build advanced analytical competencies and scientific research depth.
+            </p>
+          </div>
+          <div class="edu-tags">
+            <span class="edu-tag">Forensic Biology</span>
+            <span class="edu-tag">DNA Fingerprinting</span>
+            <span class="edu-tag">Forensic Genetics</span>
+            <span class="edu-tag">Molecular Diagnostics</span>
+            <span class="edu-tag">Advanced Criminalistics</span>
+          </div>
+        </div>
+
+        <!-- Bachelor's Degree -->
+        <div class="edu-card">
+          <div class="edu-card-top">
+            <h3 class="edu-degree">Bachelor of Science (B.Sc.) - Forensic Science</h3>
+            <span class="edu-badge-status completed">Completed</span>
+          </div>
+          <div>
+            <div class="edu-institution">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+              Sage University, Bhopal
+            </div>
+            <div class="edu-score-banner">
+              <span class="score-lbl">Graduation Academic Score</span>
+              <span class="score-num">82.9%</span>
+            </div>
+            <p class="edu-desc">
+              Undergraduate education establishing a strong academic foundation in forensic science, crime scene management, forensic chemistry, biology, toxicology, fingerprint analysis, and scientific investigative principles.
+            </p>
+          </div>
+          <div class="edu-tags">
+            <span class="edu-tag">82.9% Distinction</span>
+            <span class="edu-tag">Crime Scene Investigation</span>
+            <span class="edu-tag">Forensic Serology</span>
+            <span class="edu-tag">Analytical Chemistry</span>
+            <span class="edu-tag">Evidence Handling</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       PROFESSIONAL EXPERIENCE & TRAINING
+       ========================================================================== -->
+  <section class="section" id="experience">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Section 03</span>
+        <h2 class="section-title">Professional Experience &amp; Training</h2>
+        <p class="section-subtitle">
+          Intensive practical exposure at government forensic laboratories and premier medical/forensic institutes.
+        </p>
+      </div>
+
+      <div class="exp-timeline">
+        <!-- SFSL Patna Major Internship -->
+        <div class="exp-card">
+          <div class="exp-header">
+            <div>
+              <h3 class="exp-org">State Forensic Science Laboratory (SFSL), Patna</h3>
+              <div class="exp-role-tag">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+                Forensic Science Intern &middot; Government of Bihar
+              </div>
+            </div>
+            <span class="exp-badge-gov">Government Laboratory Internship</span>
+          </div>
+
+          <p class="exp-summary">
+            Completed an intensive internship at the State Forensic Science Laboratory (SFSL), Patna, gaining comprehensive practical exposure to multidisciplinary forensic laboratory operations. Under the guidance of experienced forensic experts, received training across four major forensic divisions, strengthening laboratory precision, analytical reasoning, scientific documentation, and evidence-based decision-making.
+          </p>
+
+          <div class="divisions-title">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+            Divisions Covered During SFSL Internship
+          </div>
+
+          <div class="divisions-grid">
+            <div class="division-box bio">
+              <span class="div-name">Biology Division</span>
+              <span class="div-desc">Biological evidence identification, hair, fiber, and tissue examination, preservation protocols.</span>
+            </div>
+            <div class="division-box sero">
+              <span class="div-name">Serology Division</span>
+              <span class="div-desc">Blood and biological fluid testing, ABO typing, antigen-antibody agglutination, preliminary screening.</span>
+            </div>
+            <div class="division-box pocso">
+              <span class="div-name">POCSO Division</span>
+              <span class="div-desc">Specialized examination protocols for sensitive cases, evidentiary integrity, chain of custody strictness.</span>
+            </div>
+            <div class="division-box tox">
+              <span class="div-name">Toxicology Division</span>
+              <span class="div-desc">Chemical analysis, extraction of viscera samples, qualitative detection of poisons and illicit substances.</span>
+            </div>
+          </div>
+
+          <div class="exp-competencies">
+            <h4 style="font-size:0.88rem; text-transform:uppercase; color:var(--text-accent); margin-bottom:0.75rem; letter-spacing:0.04em;">Key Competencies &amp; Knowledge Gained</h4>
+            <ul class="comp-list">
+              <li class="comp-item"><span class="comp-bullet">&#10003;</span> Multidisciplinary forensic laboratory operations &amp; workflow navigation</li>
+              <li class="comp-item"><span class="comp-bullet">&#10003;</span> Biological evidence examination, extraction &amp; sample integrity control</li>
+              <li class="comp-item"><span class="comp-bullet">&#10003;</span> Rigorous Standard Operating Procedures (SOPs) &amp; instrument maintenance</li>
+              <li class="comp-item"><span class="comp-bullet">&#10003;</span> Strict Chain of Custody management and evidentiary audit logs</li>
+              <li class="comp-item"><span class="comp-bullet">&#10003;</span> Quality assurance (QA) practices &amp; laboratory biosafety protocols</li>
+              <li class="comp-item"><span class="comp-bullet">&#10003;</span> Scientific documentation, analytical reasoning &amp; expert report drafting</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 3 Supporting Training Programs -->
+        <div class="training-subgrid">
+          <!-- Ethical Edufabrica / AIIMS Delhi -->
+          <div class="sub-exp-card">
+            <div>
+              <h4 class="sub-exp-title">Ethical Edufabrica &amp; Pulse, AIIMS Delhi</h4>
+              <div class="sub-exp-role">Forensic Science Trainee</div>
+              <p class="sub-exp-desc">
+                Successfully completed a certified Forensic Science training program conducted in association with Pulse, AIIMS Delhi. Gained foundational exposure to forensic science concepts, CSI principles, and scientific case interpretation.
+              </p>
+            </div>
+            <div class="pill-group">
+              <span class="tiny-pill">AIIMS Delhi Collaboration</span>
+              <span class="tiny-pill">Crime Scene Investigation</span>
+              <span class="tiny-pill">Case Interpretation</span>
+            </div>
+          </div>
+
+          <!-- SIFS India -->
+          <div class="sub-exp-card">
+            <div>
+              <h4 class="sub-exp-title">Sherlock Institute of Forensic Science (SIFS India)</h4>
+              <div class="sub-exp-role">Cyber Security &amp; OSINT Trainee</div>
+              <p class="sub-exp-desc">
+                Completed a Foundation Certificate Course in Cyber Security and Open-Source Intelligence (OSINT). Acquired knowledge on digital threat awareness, public data analysis, and cybersecurity applications in investigative workflows.
+              </p>
+            </div>
+            <div class="pill-group">
+              <span class="tiny-pill">OSINT Techniques</span>
+              <span class="tiny-pill">Cybersecurity Basics</span>
+              <span class="tiny-pill">Digital Threat Awareness</span>
+            </div>
+          </div>
+
+          <!-- Pregrad -->
+          <div class="sub-exp-card">
+            <div>
+              <h4 class="sub-exp-title">Pregrad</h4>
+              <div class="sub-exp-role">Intern</div>
+              <p class="sub-exp-desc">
+                Contributed to student career development initiatives by supporting engagement activities, learner assistance, career-focused resources, and cross-functional communication.
+              </p>
+            </div>
+            <div class="pill-group">
+              <span class="tiny-pill">Student Engagement</span>
+              <span class="tiny-pill">Communication</span>
+              <span class="tiny-pill">Career Development</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       INTERACTIVE 3D FORENSIC SPECIMEN & MOLECULAR LAB (THREE.JS)
+       ========================================================================== -->
+  <section class="section lab-3d-section" id="lab-3d">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Interactive 3D Simulation</span>
+        <h2 class="section-title">3D Forensic Molecular Laboratory</h2>
+        <p class="section-subtitle">
+          Interactive real-time 3D simulation of molecular forensic models: Drag or touch to rotate 360&deg; in 3D space.
+        </p>
+      </div>
+
+      <div class="lab-3d-viewport-card">
+        <div class="lab-3d-header">
+          <div class="lab-3d-title-group">
+            <h3 id="lab-3d-model-name">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent-cyan);"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+              B-DNA Double Helix (Forensic STR Profiling)
+            </h3>
+            <p id="lab-3d-model-info">48 Nucleotide Pairs &middot; Anti-Parallel Double Helix &middot; 3.4 &Aring; Stride</p>
+          </div>
+
+          <div class="lab-3d-controls">
+            <button class="btn-3d-model active" data-model-switch="dna">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+              3D DNA Double Helix
+            </button>
+            <button class="btn-3d-model" data-model-switch="antibody">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              3D Antibody Assay (Project 1)
+            </button>
+            <button class="btn-3d-model" data-model-switch="lattice">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+              3D Serology Lattice
+            </button>
+          </div>
+        </div>
+
+        <div class="lab-3d-stage">
+          <div class="lab-3d-hud-overlay">
+            <div class="lab-3d-hud-item">
+              <span class="lab-3d-hud-dot"></span>
+              <span>RENDER ENGINE: WEBGL / THREE.JS</span>
+            </div>
+            <div class="lab-3d-hud-item" style="color:var(--text-muted); font-size:0.72rem;">
+              <span>TOUCH / DRAG TO ROTATE 360&deg;</span>
+            </div>
+          </div>
+
+          <div id="three-dna-viewport" style="width: 100%; height: 100%;"></div>
+
+          <div class="lab-3d-footer-info">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+            Interactive 3D Biomolecular Model &middot; Real-time Physics
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       ACADEMIC PROJECTS & RESEARCH WORK
+       ========================================================================== -->
+  <section class="section" id="projects" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Section 04</span>
+        <h2 class="section-title">Academic Projects &amp; Research Work</h2>
+        <p class="section-subtitle">
+          Applying scientific principles to practical challenges in biological evidence screening and analytical chemistry.
+        </p>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Project 1: Blood Grouping Kit -->
+        <div class="project-card">
+          <div class="project-tag-bar">
+            <span class="proj-domain biology">Forensic Biology &amp; Serology</span>
+            <span class="proj-id">PROJECT 01</span>
+          </div>
+
+          <h3 class="proj-title">Rapid Field Blood Grouping Kit for Preliminary Crime Scene Analysis</h3>
+
+          <p class="proj-overview">
+            This project focuses on developing an innovative forensic biology solution for rapid preliminary ABO blood group screening at crime scenes. The proposed concept explores antigen-antibody agglutination reactions as a means of supporting preliminary blood group identification during early stages of forensic investigation, accelerating preliminary analysis while preserving biological sample integrity for confirmatory laboratory testing.
+          </p>
+
+          <div class="proj-section-title">Scientific Concepts Involved</div>
+          <div class="concepts-cloud">
+            <span class="concept-chip">Forensic Biology</span>
+            <span class="concept-chip">Forensic Serology</span>
+            <span class="concept-chip">ABO Blood Grouping</span>
+            <span class="concept-chip">Antigen-Antibody Agglutination</span>
+            <span class="concept-chip">Immunochromatographic Assay</span>
+            <span class="concept-chip">Crime Scene Protocols</span>
+          </div>
+
+          <div class="proj-section-title">Project Objectives</div>
+          <ul class="proj-objectives">
+            <li>Explore rapid preliminary ABO blood group screening at crime scenes</li>
+            <li>Apply antigen-antibody agglutination principles for swift visual identification</li>
+            <li>Support early evidentiary assessment during critical initial investigative hours</li>
+            <li>Ensure biological sample preservation for subsequent confirmatory laboratory DNA analysis</li>
+          </ul>
+
+          <div class="proj-significance-box">
+            <p><strong>Scientific Significance:</strong> Explores the potential of rapid preliminary screening methods in forensic investigations, demonstrating how practical forensic biology solutions can improve early investigative workflows without compromising downstream genetic analyses.</p>
+          </div>
+
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:1.25rem;">
+            <span class="proj-note">Status: Engineered Project Concept / Proposal</span>
+            <button class="btn btn-outline" style="padding:0.4rem 0.9rem; font-size:0.8rem;" data-project-trigger="proj1">
+              View Detailed Protocol &rarr;
+            </button>
+          </div>
+        </div>
+
+        <!-- Project 2: Milk Adulteration -->
+        <div class="project-card">
+          <div class="project-tag-bar">
+            <span class="proj-domain chemistry">Analytical Chemistry &amp; Quality</span>
+            <span class="proj-id">PROJECT 02</span>
+          </div>
+
+          <h3 class="proj-title">Examination of Adulteration in Local Vendors' Milk by Physical and Chemical Methods</h3>
+
+          <p class="proj-overview">
+            This academic project involved a comprehensive analytical study to assess the quality and authenticity of milk collected from local vendors using standardized physical and chemical examination techniques. The study evaluated milk quality through analytical parameters and identified possible indications of adulteration using laboratory-based testing methods.
+          </p>
+
+          <div class="proj-section-title">Scientific Concepts Involved</div>
+          <div class="concepts-cloud">
+            <span class="concept-chip">Food Chemistry</span>
+            <span class="concept-chip">Milk Quality Analysis</span>
+            <span class="concept-chip">Physical Examination Methods</span>
+            <span class="concept-chip">Chemical Analysis</span>
+            <span class="concept-chip">Adulteration Detection</span>
+            <span class="concept-chip">pH Analysis</span>
+            <span class="concept-chip">Lactometer Test</span>
+            <span class="concept-chip">Specific Gravity</span>
+            <span class="concept-chip">Fat Content Analysis</span>
+          </div>
+
+          <div class="proj-section-title">Project Objectives</div>
+          <ul class="proj-objectives">
+            <li>Assess the quality of milk samples collected from diverse local vendors</li>
+            <li>Examine physical and chemical characteristics against reference standards</li>
+            <li>Apply calibrated pH analysis, specific gravity measurement, and lactometer testing</li>
+            <li>Evaluate fat content and chemical parameters to investigate adulteration</li>
+          </ul>
+
+          <div class="proj-significance-box">
+            <p><strong>Scientific Significance:</strong> Demonstrates the application of analytical chemistry and quality assessment methods to real-world food safety concerns, highlighting the importance of accurate laboratory testing, scientific documentation, and evidence-based interpretation.</p>
+          </div>
+
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:1.25rem;">
+            <span class="proj-note">Status: Completed Analytical Study</span>
+            <button class="btn btn-outline" style="padding:0.4rem 0.9rem; font-size:0.8rem;" data-project-trigger="proj2">
+              View Analytical Parameters &rarr;
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       ACHIEVEMENTS & RECOGNITION
+       ========================================================================== -->
+  <section class="section" id="achievements">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Section 05</span>
+        <h2 class="section-title">Achievements &amp; Recognition</h2>
+        <p class="section-subtitle">
+          Recognitions reflecting academic excellence, competitive investigative performance, and professional certifications.
+        </p>
+      </div>
+
+      <div class="achievements-grid">
+        <!-- Second Prize CSI -->
+        <div class="award-card">
+          <div class="award-icon-badge">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+          </div>
+          <span class="award-badge-pill">Academic Competition Award</span>
+          <h3 class="award-title">Second Prize - Crime Scene Investigation Competition</h3>
+          <div class="award-org">Sage University, Bhopal</div>
+          <p class="award-desc">
+            Recognized for securing Second Prize in a competitive Crime Scene Investigation Competition at Sage University. Demonstrated acute analytical thinking, biological evidence examination, scene reconstruction, problem-solving, and adherence to forensic investigative principles under pressure.
+          </p>
+        </div>
+
+        <!-- AIIMS Delhi Certification -->
+        <div class="award-card">
+          <div class="award-icon-badge">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          </div>
+          <span class="award-badge-pill">Professional Certification</span>
+          <h3 class="award-title">Forensic Science Certification - AIIMS Delhi Collaboration</h3>
+          <div class="award-org">Ethical Edufabrica &amp; Pulse, AIIMS Delhi</div>
+          <p class="award-desc">
+            Successfully earned a professional Forensic Science certification through the specialized program conducted in collaboration with Pulse, AIIMS Delhi. Strengthened foundational understanding of medico-legal concepts, CSI methodology, and evidence interpretation.
+          </p>
+        </div>
+
+        <!-- SFSL Patna Completion -->
+        <div class="award-card">
+          <div class="award-icon-badge">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          </div>
+          <span class="award-badge-pill">Government Lab Credential</span>
+          <h3 class="award-title">SFSL Patna Multidisciplinary Internship Completion</h3>
+          <div class="award-org">State Forensic Science Laboratory, Bihar</div>
+          <p class="award-desc">
+            Successfully completed comprehensive forensic laboratory training across four distinct divisions: Biology, Serology, POCSO, and Toxicology. Validated practical competency in handling biological evidence and state laboratory workflows.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       CERTIFICATIONS, WORKSHOPS & CONFERENCES
+       ========================================================================== -->
+  <section class="section" id="certifications" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Section 06</span>
+        <h2 class="section-title">Certifications, Workshops &amp; Conferences</h2>
+        <p class="section-subtitle">
+          Continuous professional development, scientific conference engagement, and forensic certifications.
+        </p>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div class="cert-filter-bar">
+        <button class="filter-btn active" data-filter="all">All Credentials</button>
+        <button class="filter-btn" data-filter="conference">Conferences</button>
+        <button class="filter-btn" data-filter="training">Professional Training</button>
+        <button class="filter-btn" data-filter="workshop">Workshops</button>
+      </div>
+
+      <div class="cert-grid">
+        <!-- Forensic Gyaan 5 -->
+        <div class="cert-card" data-type="conference">
+          <div>
+            <span class="cert-type-tag">International Conference</span>
+            <h4 class="cert-title">5th International Conference on Recent Developments in Forensic Science - Forensic Gyaan 5</h4>
+            <div class="cert-org">VGU, Jaipur &middot; Certificate of Presentation</div>
+            <p style="font-size:0.82rem; color:var(--text-secondary); line-height:1.5;">
+              Academic engagement with contemporary developments in forensic science and exposure to emerging research in molecular and digital forensic methods.
+            </p>
+          </div>
+          <div class="cert-footer">
+            <span>Year: 2025</span>
+            <button class="cert-btn-preview" data-cert-trigger="fg5">View Details &rarr;</button>
+          </div>
+        </div>
+
+        <!-- AIIMS Delhi Training -->
+        <div class="cert-card" data-type="training">
+          <div>
+            <span class="cert-type-tag">Professional Training</span>
+            <h4 class="cert-title">Forensic Science Online Training Program</h4>
+            <div class="cert-org">Ethical Edufabrica &amp; Pulse, AIIMS Delhi</div>
+            <p style="font-size:0.82rem; color:var(--text-secondary); line-height:1.5;">
+              Training on forensic science fundamentals, crime scene investigation concepts, and evidence-based case interpretation.
+            </p>
+          </div>
+          <div class="cert-footer">
+            <span>Year: 2025</span>
+            <button class="cert-btn-preview" data-cert-trigger="aiims">View Details &rarr;</button>
+          </div>
+        </div>
+
+        <!-- Sage Workshop -->
+        <div class="cert-card" data-type="workshop">
+          <div>
+            <span class="cert-type-tag">Hands-on Workshop</span>
+            <h4 class="cert-title">Behind the Scene of Crime - Forensic Science Workshop</h4>
+            <div class="cert-org">SAGE University &amp; iNurture Education Solutions</div>
+            <p style="font-size:0.82rem; color:var(--text-secondary); line-height:1.5;">
+              Intensive practical crime scene management, physical evidence packaging, latent fingerprint recovery, and documentation.
+            </p>
+          </div>
+          <div class="cert-footer">
+            <span>Year: 2023</span>
+            <button class="cert-btn-preview" data-cert-trigger="sage">View Details &rarr;</button>
+          </div>
+        </div>
+
+        <!-- AFRS Indore -->
+        <div class="cert-card" data-type="training">
+          <div>
+            <span class="cert-type-tag">Scientific Training</span>
+            <h4 class="cert-title">Applied Forensic Research Sciences Training</h4>
+            <div class="cert-org">AFRS, Indore</div>
+            <p style="font-size:0.82rem; color:var(--text-secondary); line-height:1.5;">
+              Methodological training in applied forensic sciences, research paper evaluation, and interdisciplinary laboratory practices.
+            </p>
+          </div>
+          <div class="cert-footer">
+            <span>Year: 2023</span>
+            <button class="cert-btn-preview" data-cert-trigger="afrs">View Details &rarr;</button>
+          </div>
+        </div>
+
+        <!-- Psychology of a Rapist -->
+        <div class="cert-card" data-type="workshop">
+          <div>
+            <span class="cert-type-tag">Expert Series</span>
+            <h4 class="cert-title">Forensic Talkshow Expert Series - Psychology of a Rapist</h4>
+            <div class="cert-org">Applied Forensic Research Sciences (AFRS) &middot; Participation</div>
+            <p style="font-size:0.82rem; color:var(--text-secondary); line-height:1.5;">
+              Specialized seminar exploring forensic psychological dynamics, offender profiling, and behavioral analysis in violent crimes.
+            </p>
+          </div>
+          <div class="cert-footer">
+            <span>Participation Certificate</span>
+            <button class="cert-btn-preview" data-cert-trigger="psycho">View Details &rarr;</button>
+          </div>
+        </div>
+
+        <!-- SIFS India -->
+        <div class="cert-card" data-type="training">
+          <div>
+            <span class="cert-type-tag">Cyber &amp; OSINT Training</span>
+            <h4 class="cert-title">Foundation Certificate in Cyber Security &amp; OSINT</h4>
+            <div class="cert-org">Sherlock Institute of Forensic Science India (SIFS India)</div>
+            <p style="font-size:0.82rem; color:var(--text-secondary); line-height:1.5;">
+              Digital threat awareness, public data scraping, open-source intelligence gathering, and investigative cybersecurity.
+            </p>
+          </div>
+          <div class="cert-footer">
+            <span>Foundation Certificate</span>
+            <button class="cert-btn-preview" data-cert-trigger="sifs">View Details &rarr;</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       TECHNICAL SKILLS & SCIENTIFIC COMPETENCIES (6 CATEGORIES)
+       ========================================================================== -->
+  <section class="section" id="skills">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Section 07</span>
+        <h2 class="section-title">Technical Skills &amp; Scientific Competencies</h2>
+        <p class="section-subtitle">
+          Curated into six specialized categories reflecting laboratory capabilities, scientific reasoning, and analytical techniques.
+        </p>
+      </div>
+
+      <!-- Skill Category Navigation Tabs -->
+      <div class="skills-nav-tabs">
+        <button class="skill-tab-btn active" data-category="dna">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          A. DNA &amp; Molecular Forensics
+        </button>
+        <button class="skill-tab-btn" data-category="biology">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+          B. Forensic Biology
+        </button>
+        <button class="skill-tab-btn" data-category="serology">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+          C. Forensic Serology
+        </button>
+        <button class="skill-tab-btn" data-category="lab">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"></path></svg>
+          D. Laboratory Techniques
+        </button>
+        <button class="skill-tab-btn" data-category="digital">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+          E. Digital Forensics &amp; OSINT
+        </button>
+        <button class="skill-tab-btn" data-category="analytical">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+          F. Analytical &amp; Professional
+        </button>
+      </div>
+
+      <!-- Tab A: DNA & Molecular Forensics -->
+      <div class="skills-content-panel active" id="skills-tab-dna">
+        <div class="skills-items-grid">
+          <div class="skill-item-card">
+            <div class="skill-icon-bullet">&#10003;</div>
+            <div class="skill-item-info">
+              <h4>DNA Fingerprinting</h4>
+              <p>Understanding principles of genetic identification, restriction fragment analysis, and STR markers.</p>
+            </div>
+          </div>
+          <div class="skill-item-card">
+            <div class="skill-icon-bullet">&#10003;</div>
+            <div class="skill-item-info">
+              <h4>DNA Profiling</h4>
+              <p>Short tandem repeat (STR) typing concepts, allelic ladder interpretation, and sample purity assessment.</p>
+            </div>
+          </div>
+          <div class="skill-item-card">
+            <div class="skill-icon-bullet">&#10003;</div>
+            <div class="skill-item-info">
+              <h4>Molecular Diagnostics</h4>
+              <p>Molecular detection techniques, PCR amplification theory, and diagnostic assay workflows.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab B: Forensic Biology -->
+      <div class="skills-content-panel" id="skills-tab-biology">
+        <div class="skills-items-grid">
+          <div class="skill-item-card">
+            <div class="skill-icon-bullet">&#10003;</div>
+            <div class="skill-item-info">
+              <h4>Biological Evidence Collection</h4>
+              <p>Systematic packaging, sterile recovery, substrate controls, and contamination mitigation.</p>
+            </div>
+          </div>
+          <div class="skill-item-card">
+            <div class="skill-icon-bullet">&#10003;</div>
+            <div class="skill-item-info">
+              <h4>Biological Evidence Preservation</h4>
+              <p>Desiccation, temperature control, and packaging protocols to avoid degradation.</p>
+            </div>
+          </div>
+          <div class="skill-item-card">
+            <div class="skill-icon-bullet">&#10003;</div>
+            <div class="skill-item-info">
+              <h4>Blood &amp; Biological Fluid Examination</h4>
+              <p>Macroscopic and microscopic screening of physiological stains on assorted fabrics.</p>
+            </div>
+          </div>
+          <div class="skill-item-card">
+            <div class="skill-icon-bullet">&#10003;</div>
+            <div class="skill-item-info">
+              <h4>Biological Evidence Analysis</h4>
+              <p>Preliminary identification of human vs. non-human biological matter and hair/fiber comparative study.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab C: Forensic Serology -->
+      <div class="skills-content-panel" id="skills-tab-serology">
+        <div class="skills-items-grid">
+          <div class="skill-item-card">
+            <div class="skill-icon-bullet">&#10003;</div>
+            <div class="skill-item-info">
+              <h4>Serology Basics</h4>
+              <p>Antiserum preparation, immune response principles, and blood serum characterization.</p>
+            </div>
+          </div>
+          <div class="skill-item-card">
+            <div class="skill-icon-bullet">&#10003;</div>
+            <div class="skill-item-info">
+              <h4>ABO Blood Grouping</h4>
+              <p>Forward and reverse blood typing, antigen detection, and cross-matching procedures.</p>
+            </div>
+          </div>
+          <div class="skill-item-card">
+            <div class="skill-icon-bullet">&#10003;</div>
+            <div class="skill-item-info">
+              <h4>Biological Fluid Examination</h4>
+              <p>Chemical colorimetric presumptive screening for saliva, semen, and blood traces.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab D: Laboratory Techniques -->
+      <div class="skills-content-panel" id="skills-tab-lab">
+        <div class="skills-items-grid">
+          <div class="skill-item-card">
+            <div class="skill-icon-bullet">&#10003;</div>
+            <div class="skill-item-info">
+              <h4>Microscopy Techniques</h4>
+              <p>Compound optical microscopy, stereomicroscopy, slide staining, and biological specimen mounting.</p>
+            </div>
+          </div>
+          <div class="skill-item-card">
+            <div class="skill-icon-bullet">&#10003;</div>
+            <div class="skill-item-info">
+              <h4>Evidence Documentation</h4>
+              <p>Detailed bench records, evidentiary photography, notes logging, and chain logs.</p>
+            </div>
+          </div>
+          <div class="skill-item-card">
+            <div class="skill-icon-bullet">&#10003;</div>
+            <div class="skill-item-info">
+              <h4>Laboratory Safety &amp; Biosafety</h4>
+              <p>Personal Protective Equipment (PPE), biohazard handling, chemical disposal protocols.</p>
+            </div>
+          </div>
+          <div class="skill-item-card">
+            <div class="skill-icon-bullet">&#10003;</div>
+            <div class="skill-item-info">
+              <h4>Standard Operating Procedures (SOPs)</h4>
+              <p>Adherence to standardized validated forensic laboratory protocols and quality manuals.</p>
+            </div>
+          </div>
+          <div class="skill-item-card">
+            <div class="skill-icon-bullet">&#10003;</div>
+            <div class="skill-item-info">
+              <h4>Chain of Custody Protocols</h4>
+              <p>Evidentiary seal preservation, transfer documentation, and court-admissible audit trails.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab E: Digital Forensics & Cybersecurity -->
+      <div class="skills-content-panel" id="skills-tab-digital">
+        <div class="skills-items-grid">
+          <div class="skill-item-card">
+            <div class="skill-icon-bullet">&#10003;</div>
+            <div class="skill-item-info">
+              <h4>Basic Digital Forensics Awareness</h4>
+              <p>Understanding digital artifact identification, hash verification, and digital evidence handling.</p>
+            </div>
+          </div>
+          <div class="skill-item-card">
+            <div class="skill-icon-bullet">&#10003;</div>
+            <div class="skill-item-info">
+              <h4>Cyber Security Fundamentals</h4>
+              <p>Threat landscape comprehension, network security essentials, and secure data handling.</p>
+            </div>
+          </div>
+          <div class="skill-item-card">
+            <div class="skill-icon-bullet">&#10003;</div>
+            <div class="skill-item-info">
+              <h4>Open-Source Intelligence (OSINT)</h4>
+              <p>Investigative research of publicly available digital information and search heuristics.</p>
+            </div>
+          </div>
+          <div class="skill-item-card">
+            <div class="skill-icon-bullet">&#10003;</div>
+            <div class="skill-item-info">
+              <h4>Digital Threat Awareness</h4>
+              <p>Recognizing phishing vectors, social engineering threats, and forensic digital integrity risks.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab F: Analytical & Professional Skills -->
+      <div class="skills-content-panel" id="skills-tab-analytical">
+        <div class="skills-items-grid">
+          <div class="skill-item-card">
+            <div class="skill-icon-bullet">&#10003;</div>
+            <div class="skill-item-info">
+              <h4>Analytical Reasoning</h4>
+              <p>Systematic deduction, hypothesis testing, and rigorous cross-examination of forensic findings.</p>
+            </div>
+          </div>
+          <div class="skill-item-card">
+            <div class="skill-icon-bullet">&#10003;</div>
+            <div class="skill-item-info">
+              <h4>Scientific Documentation</h4>
+              <p>Clear, uninvented, objective record-keeping and technical report drafting.</p>
+            </div>
+          </div>
+          <div class="skill-item-card">
+            <div class="skill-icon-bullet">&#10003;</div>
+            <div class="skill-item-info">
+              <h4>Evidence-Based Decision Making</h4>
+              <p>Reaching conclusions strictly grounded in repeatable scientific data and validated metrics.</p>
+            </div>
+          </div>
+          <div class="skill-item-card">
+            <div class="skill-icon-bullet">&#10003;</div>
+            <div class="skill-item-info">
+              <h4>Laboratory Precision</h4>
+              <p>High reproducibility in volumetric measurement, sample pipetting, and reagent preparation.</p>
+            </div>
+          </div>
+          <div class="skill-item-card">
+            <div class="skill-icon-bullet">&#10003;</div>
+            <div class="skill-item-info">
+              <h4>Communication</h4>
+              <p>Clear presentation of complex scientific concepts to both technical and non-technical audiences.</p>
+            </div>
+          </div>
+          <div class="skill-item-card">
+            <div class="skill-icon-bullet">&#10003;</div>
+            <div class="skill-item-info">
+              <h4>Student &amp; Learner Engagement</h4>
+              <p>Academic mentoring, peer collaboration, and career initiative coordination.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       RESEARCH INTERESTS & FUTURE DIRECTIONS
+       ========================================================================== -->
+  <section class="section" id="research" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Section 08</span>
+        <h2 class="section-title">Research Interests &amp; Academic Direction</h2>
+        <p class="section-subtitle">
+          Core areas of scientific inquiry guiding ongoing postgraduate research, institutional collaboration, and laboratory work.
+        </p>
+      </div>
+
+      <div class="research-grid">
+        <!-- 1 -->
+        <div class="research-card">
+          <div class="research-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+          </div>
+          <h3 class="research-title">Forensic Biology and Genetics</h3>
+          <p class="research-desc">
+            Deep interest in the scientific examination of biological trace evidence, tissue discrimination, and the applied biological sciences in individual forensic identification and criminal investigations.
+          </p>
+        </div>
+
+        <!-- 2 -->
+        <div class="research-card">
+          <div class="research-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          </div>
+          <h3 class="research-title">DNA Fingerprinting &amp; DNA Profiling</h3>
+          <p class="research-desc">
+            Interest in advanced STR genotyping, resolving degraded and low-template biological samples, and the statistical interpretation of complex forensic DNA mixtures.
+          </p>
+        </div>
+
+        <!-- 3 -->
+        <div class="research-card">
+          <div class="research-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+          </div>
+          <h3 class="research-title">Forensic Epigenetics</h3>
+          <p class="research-desc">
+            Studying DNA methylation dynamics and tissue-specific epigenetic markers, with focus on their emerging applications in biological age estimation and body fluid differentiation.
+          </p>
+        </div>
+
+        <!-- 4 -->
+        <div class="research-card">
+          <div class="research-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          </div>
+          <h3 class="research-title">Molecular Diagnostics</h3>
+          <p class="research-desc">
+            Investigating sensitive molecular diagnostic approaches for early pathogen screening, rapid forensic biological identification, and high-precision assay design.
+          </p>
+        </div>
+
+        <!-- 5 -->
+        <div class="research-card">
+          <div class="research-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+          </div>
+          <h3 class="research-title">Forensic Serology &amp; Rapid Assays</h3>
+          <p class="research-desc">
+            Blood group antigen-antibody interactions, immunochromatographic test strip design, and rapid on-scene preliminary diagnostic screening mechanisms.
+          </p>
+        </div>
+
+        <!-- 6 -->
+        <div class="research-card">
+          <div class="research-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+          </div>
+          <h3 class="research-title">AI &amp; Modern Technology in Forensics</h3>
+          <p class="research-desc">
+            Exploring how artificial intelligence, computer vision, and computational biology can assist forensic experts in objective pattern interpretation and rigorous laboratory documentation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       PROFESSIONAL OBJECTIVE BANNER
+       ========================================================================== -->
+  <section class="section objective-section">
+    <div class="container">
+      <div class="objective-box">
+        <div class="quote-icon">&ldquo;</div>
+        <p class="objective-quote">
+          My professional objective is to establish a career in the field of Forensic Science with a particular focus on Forensic Biology, DNA Fingerprinting, and Molecular Forensics. I aspire to strengthen my expertise through advanced academic learning, practical laboratory experience, and research-oriented activities.
+          <br><br>
+          I aim to explore innovative scientific methodologies, contribute to forensic research, and develop a deeper understanding of biological evidence examination and molecular identification techniques. In the long term, I aspire to contribute to forensic laboratories, scientific research institutions, and government forensic organizations through accurate scientific analysis, ethical laboratory practices, and continuous professional development.
+        </p>
+        <div class="objective-author">Kaushiki Singh</div>
+        <div class="objective-role">Forensic Science Postgraduate Researcher</div>
+      </div>
+
+      <!-- Roadmap / Important details checklist -->
+      <div class="roadmap-box">
+        <div class="roadmap-header">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent-cyan);"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <h3>Portfolio Maintenance Checklist &amp; Future Updates</h3>
+        </div>
+        <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:1rem;">
+          To keep your portfolio completely grounded in public, verifiable information without inventing data, these placeholders are ready to be populated as soon as official documents arrive:
+        </p>
+        <div class="roadmap-grid">
+          <div class="roadmap-item">
+            <strong>M.Sc. Academic Timeline</strong>
+            <span>Add exact batch years &amp; expected completion date</span>
+          </div>
+          <div class="roadmap-item">
+            <strong>M.Sc. CGPA / Percentage</strong>
+            <span>Update post-semester score transcript</span>
+          </div>
+          <div class="roadmap-item">
+            <strong>SFSL Patna Internship Dates</strong>
+            <span>Attach exact official tenure period</span>
+          </div>
+          <div class="roadmap-item">
+            <strong>Forensic Gyaan 5 Presentation</strong>
+            <span>Add title of presented research paper</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       CONTACT SECTION
+       ========================================================================== -->
+  <section class="section" id="contact" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Section 10</span>
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-subtitle">
+          Open to academic discussions, laboratory research collaborations, forensic internships, and scientific inquiries.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Contact Information Card -->
+        <div class="contact-card">
+          <h3 style="font-size: 1.25rem;">Contact Information</h3>
+          <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+            Feel free to reach out for research inquiries, academic networking, conference presentations, or forensic science opportunities.
+          </p>
+
+          <div class="contact-channels">
+            <!-- Professional Email -->
+            <div class="channel-row">
+              <div class="channel-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </div>
+              <div class="channel-details">
+                <div class="channel-label">Professional Email</div>
+                <div class="channel-val">
+                  <a href="mailto:kaushikidiva@gmail.com">kaushikidiva@gmail.com</a>
+                </div>
+              </div>
+              <button class="btn-copy" id="btn-copy-prof-email" data-email="kaushikidiva@gmail.com" title="Copy email">Copy</button>
+            </div>
+
+            <!-- Academic Email -->
+            <div class="channel-row">
+              <div class="channel-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+              </div>
+              <div class="channel-details">
+                <div class="channel-label">Academic Inquiries</div>
+                <div class="channel-val">
+                  <a href="mailto:kaushikidiva@gmail.com">kaushikidiva@gmail.com</a>
+                </div>
+              </div>
+              <button class="btn-copy" id="btn-copy-email" data-email="kaushikidiva@gmail.com" title="Copy email">Copy</button>
+            </div>
+
+            <!-- University & Location -->
+            <div class="channel-row">
+              <div class="channel-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              </div>
+              <div class="channel-details">
+                <div class="channel-label">Current University &amp; Location</div>
+                <div class="channel-val">Vivekananda Global University (VGU), Jaipur, Rajasthan, India</div>
+              </div>
+            </div>
+
+            <!-- LinkedIn Profile -->
+            <div class="channel-row">
+              <div class="channel-icon" style="color: #0077b5; background: rgba(0, 119, 181, 0.12);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+              </div>
+              <div class="channel-details">
+                <div class="channel-label">LinkedIn Profile (Connect)</div>
+                <div class="channel-val">
+                  <a href="https://www.linkedin.com/in/kaushiki-singh-560336290?utm_source=share_via&amp;utm_content=profile&amp;utm_medium=member_android" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:0.35rem; color:var(--accent-cyan);">
+                    <span>linkedin.com/in/kaushiki-singh</span>
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Inquiry Message Form -->
+        <form class="contact-form" id="contact-form">
+          <h3 style="font-size: 1.25rem;">Send a Scientific Inquiry</h3>
+
+          <div class="form-group">
+            <label class="form-label" for="form-name">Your Full Name *</label>
+            <input type="text" id="form-name" class="form-input" placeholder="e.g. Dr. Jane Doe / Research Fellow" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="form-email">Your Email Address *</label>
+            <input type="email" id="form-email" class="form-input" placeholder="e.g. jane.doe@university.edu" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="form-subject">Subject / Inquiry Type</label>
+            <input type="text" id="form-subject" class="form-input" placeholder="e.g. Academic Research Collaboration / Forensic Biology Inquiry" value="Forensic Science Inquiry">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="form-message">Message *</label>
+            <textarea id="form-message" class="form-textarea" placeholder="Write your message here..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="margin-top: 0.5rem;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <h4>Kaushiki Singh</h4>
+          <p>Forensic Science | Forensic Biology | DNA Fingerprinting | Research &amp; Innovation</p>
+        </div>
+
+        <ul class="footer-nav">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#lab-3d">3D Lab</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#certifications">Certifications</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="cv.html" target="_blank" style="color:var(--accent-cyan); font-weight:600;">Academic CV</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-copy">
+        &copy; 2026 Kaushiki Singh. Academic Portfolio &middot; Developed with Scientific Integrity &amp; Grounded Data.
+      </div>
+    </div>
+  </footer>
+  </main>
+
+  <!-- ==========================================================================
+       MODAL WINDOW (Project & Certificate Viewer)
+       ========================================================================== -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close" aria-label="Close modal">&times;</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

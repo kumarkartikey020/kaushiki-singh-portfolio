@@ -1,0 +1,12 @@
+# Verity archive / original subfolder
+verity-main/
+
+# Node & Logs
+node_modules/
+*.log
+npm-debug.log*
+
+# OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
